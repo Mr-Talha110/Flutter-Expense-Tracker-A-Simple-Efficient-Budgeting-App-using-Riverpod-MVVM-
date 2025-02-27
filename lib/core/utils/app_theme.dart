@@ -1,9 +1,9 @@
+import 'package:expense_tracker_app/core/utils/app_fonts.dart';
 import 'package:flutter/material.dart';
 
 ThemeData appTheme = ThemeData(
-  // colorSchemeSeed: AppColors.primary,
   useMaterial3: false,
-  // fontFamily: AppFonts.ralewayRegular,
+  fontFamily: AppFonts.robotoRegular,
 
   // Scaffold background color
   scaffoldBackgroundColor: Colors.white,

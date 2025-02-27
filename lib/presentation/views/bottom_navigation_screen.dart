@@ -1,6 +1,8 @@
+import 'package:expense_tracker_app/core/routes/app_router.dart';
 import 'package:expense_tracker_app/core/utils/app_assets.dart';
 import 'package:expense_tracker_app/core/utils/app_colors.dart';
-import 'package:expense_tracker_app/features/bottom_navigation/views/components/bottom_nav_item.dart';
+import 'package:expense_tracker_app/presentation/views/transaction_list_screen.dart';
+import 'package:expense_tracker_app/presentation/widgets/bottom_nav_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -25,7 +27,7 @@ class _BottomNavigationScreenState
         case 0:
           return Container();
         case 1:
-          return Container();
+          return TransactionlistScreen();
         case 2:
           return Container();
         case 3:
@@ -76,12 +78,15 @@ class _BottomNavigationScreenState
                       ],
                     ),
                   ),
-                  CircleAvatar(
-                    radius: 25,
-                    backgroundColor: AppColors.pink,
-                    child: Icon(
-                      Icons.add,
-                      color: AppColors.black,
+                  InkWell(
+                    onTap: () => AppRouter.push(AppRouter.addTransaction),
+                    child: CircleAvatar(
+                      radius: 25,
+                      backgroundColor: AppColors.pink,
+                      child: Icon(
+                        Icons.add,
+                        color: AppColors.black,
+                      ),
                     ),
                   )
                 ],
