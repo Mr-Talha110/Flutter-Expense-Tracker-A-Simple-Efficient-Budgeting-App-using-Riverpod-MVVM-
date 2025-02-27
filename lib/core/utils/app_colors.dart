@@ -11,6 +11,7 @@ class AppColors {
   static const Color mediumBlue = Color(0xffB2CDFA);
   static const Color lightYellow = Color(0xffFFF1B7);
   static const Color mediumGreen = Color(0xffC7FFC7);
+  static const Color lowBlue = Color(0xffF5F8F9);
   static const Color purple = Color(0xffD6C8FF);
   static const Color greish = Color(0xffE3ECF1);
   static const Color cream = Color(0xffFFE0A3);

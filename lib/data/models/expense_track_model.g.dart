@@ -6,28 +6,30 @@ part of 'expense_track_model.dart';
 // TypeAdapterGenerator
 // **************************************************************************
 
-class ExpenseTrackModelAdapter extends TypeAdapter<ExpenseTrackModel> {
+class ExpenseTransactionModelAdapter
+    extends TypeAdapter<ExpenseTransactionModel> {
   @override
   final int typeId = 0;
 
   @override
-  ExpenseTrackModel read(BinaryReader reader) {
+  ExpenseTransactionModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return ExpenseTrackModel(
+    return ExpenseTransactionModel(
       shoppingType: fields[0] as ShoppingTypeEnum,
       amount: fields[1] as double,
       note: fields[2] as String,
       date: fields[3] as DateTime,
+      txId: fields[4] as String,
     );
   }
 
   @override
-  void write(BinaryWriter writer, ExpenseTrackModel obj) {
+  void write(BinaryWriter writer, ExpenseTransactionModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.shoppingType)
       ..writeByte(1)
@@ -35,7 +37,9 @@ class ExpenseTrackModelAdapter extends TypeAdapter<ExpenseTrackModel> {
       ..writeByte(2)
       ..write(obj.note)
       ..writeByte(3)
-      ..write(obj.date);
+      ..write(obj.date)
+      ..writeByte(4)
+      ..write(obj.txId);
   }
 
   @override
@@ -44,7 +48,7 @@ class ExpenseTrackModelAdapter extends TypeAdapter<ExpenseTrackModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ExpenseTrackModelAdapter &&
+      other is ExpenseTransactionModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

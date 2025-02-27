@@ -5,7 +5,7 @@ import 'package:hive/hive.dart';
 part 'expense_track_model.g.dart';
 
 @HiveType(typeId: 0)
-class ExpenseTrackModel {
+class ExpenseTransactionModel {
   @HiveField(0)
   final ShoppingTypeEnum shoppingType;
 
@@ -17,16 +17,19 @@ class ExpenseTrackModel {
 
   @HiveField(3)
   final DateTime date;
+  @HiveField(4)
+  final String txId;
 
-  ExpenseTrackModel({
+  ExpenseTransactionModel({
     required this.shoppingType,
     required this.amount,
     required this.note,
     required this.date,
+    required this.txId,
   });
 
   @override
   String toString() {
-    return 'ExpenseTrackModel(shoppingType: $shoppingType, amount: $amount, note: $note, date: $date)';
+    return 'ExpenseTrackModel(shoppingType: $shoppingType, amount: $amount, note: $note, date: $date, txID: $txId)';
   }
 }

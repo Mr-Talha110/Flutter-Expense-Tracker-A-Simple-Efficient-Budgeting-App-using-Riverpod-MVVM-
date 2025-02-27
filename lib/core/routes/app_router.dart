@@ -1,3 +1,4 @@
+import 'package:expense_tracker_app/data/models/expense_track_model.dart';
 import 'package:expense_tracker_app/presentation/views/add_transaction_screen.dart';
 import 'package:expense_tracker_app/presentation/views/bottom_navigation_screen.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ class AppRouter {
   static String currentRoute = bottomNavigation;
 
   static Route<dynamic> generateRoutes(RouteSettings settings) {
+    final params = settings.arguments;
     currentRoute = settings.name.toString();
     switch (settings.name) {
       case bottomNavigation:
@@ -20,7 +22,10 @@ class AppRouter {
         );
       case addTransaction:
         return MaterialPageRoute(
-          builder: (context) => const AddTransactionScreen(),
+          settings: settings,
+          builder: (context) => AddTransactionScreen(
+            expenseInfo: params as ExpenseTransactionModel?,
+          ),
         );
       default:
         return MaterialPageRoute(

@@ -44,7 +44,11 @@ dependencies:
   path_provider: ^2.1.5
   get_it: ^8.0.3
   fluttertoast: ^8.2.12
+  uuid: ^4.5.1
+  fl_chart: ^0.70.2
   dartz: ^0.10.1
+  intl: ^0.20.2
+  flutter_slidable: ^4.0.0
 
 dev_dependencies:
   flutter_test:

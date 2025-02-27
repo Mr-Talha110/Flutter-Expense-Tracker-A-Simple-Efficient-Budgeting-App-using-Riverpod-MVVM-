@@ -4,7 +4,14 @@ import 'package:expense_tracker_app/data/models/expense_track_model.dart';
 
 abstract class TransactionRepository {
   Future<Either<Failure, bool>> saveExpenseTransaction(
-    ExpenseTrackModel expenseInfo,
+    ExpenseTransactionModel expenseInfo,
   );
-  Future<Either<Failure, List<ExpenseTrackModel>>> fetchExpenseTransaction();
+  Future<Either<Failure, bool>> updateExpenseTransaction(
+    ExpenseTransactionModel expenseInfo,
+  );
+  Future<Either<Failure, bool>> deleteExpenseTransaction(
+    String txId,
+  );
+  Future<Either<Failure, List<ExpenseTransactionModel>>>
+      fetchExpenseTransaction();
 }

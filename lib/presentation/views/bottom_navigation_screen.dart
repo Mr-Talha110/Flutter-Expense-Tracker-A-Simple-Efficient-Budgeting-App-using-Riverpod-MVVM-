@@ -25,13 +25,13 @@ class _BottomNavigationScreenState
     Widget screens() {
       switch (currentIndex) {
         case 0:
-          return Container();
+          return Center(child: Text('Home Screen'));
         case 1:
           return TransactionlistScreen();
         case 2:
-          return Container();
+          return Center(child: Text('Wallet Screen'));
         case 3:
-          return Container();
+          return Center(child: Text('Settings Screen'));
         default:
           return Container();
       }
@@ -48,6 +48,7 @@ class _BottomNavigationScreenState
       body: screens(),
       bottomNavigationBar: SafeArea(
         child: BottomAppBar(
+          padding: EdgeInsets.only(bottom: 10),
           elevation: 0.0,
           child: Column(
             mainAxisSize: MainAxisSize.min,

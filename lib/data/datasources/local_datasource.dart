@@ -92,7 +92,7 @@ class LocalDatasource {
   static init() async {
     final directory = await getApplicationDocumentsDirectory();
     Hive.init(directory.path);
-    Hive.registerAdapter(ExpenseTrackModelAdapter());
+    Hive.registerAdapter(ExpenseTransactionModelAdapter());
     Hive.registerAdapter(ShoppingTypeEnumAdapter());
   }
 }

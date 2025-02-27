@@ -4,6 +4,6 @@ import 'package:expense_tracker_app/presentation/view_models/transaction_list_vi
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final transactionListNotifierProvider = StateNotifierProvider<
-    TransactionListViewModel, ApiResponse<List<ExpenseTrackModel>>>(
+    TransactionListViewModel, ApiResponse<List<ExpenseTransactionModel>>>(
   (ref) => TransactionListViewModel(ref: ref),
 );

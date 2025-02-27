@@ -11,7 +11,7 @@ import 'package:get_it/get_it.dart';
 class TransactionRepositoryImp extends TransactionRepository {
   @override
   Future<Either<Failure, bool>> saveExpenseTransaction(
-    ExpenseTrackModel expenseInfo,
+    ExpenseTransactionModel expenseInfo,
   ) async {
     try {
       LocalDatasource localDataSource = GetIt.instance<LocalDatasource>();
@@ -28,11 +28,30 @@ class TransactionRepositoryImp extends TransactionRepository {
   }
 
   @override
-  Future<Either<Failure, List<ExpenseTrackModel>>>
+  Future<Either<Failure, bool>> updateExpenseTransaction(
+    ExpenseTransactionModel expenseInfo,
+  ) async {
+    try {
+      LocalDatasource localDataSource = GetIt.instance<LocalDatasource>();
+      await localDataSource.editListItem(
+        localDataSource.transactionsBox,
+        localDataSource.transactionsKey,
+        expenseInfo,
+        (val) => val.txId == expenseInfo.txId,
+      );
+      return right(true);
+    } catch (e) {
+      log('error saving transaction $e');
+      return left(Failure(AppStrings.saveTransactionFailed));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ExpenseTransactionModel>>>
       fetchExpenseTransaction() async {
     try {
       LocalDatasource localDataSource = GetIt.instance<LocalDatasource>();
-      List<ExpenseTrackModel> txList = await localDataSource.fetchList(
+      List<ExpenseTransactionModel> txList = await localDataSource.fetchList(
         localDataSource.transactionsBox,
         localDataSource.transactionsKey,
       );
@@ -40,6 +59,22 @@ class TransactionRepositoryImp extends TransactionRepository {
     } catch (e) {
       log('error fetching transaction $e');
       return left(Failure(AppStrings.saveTransactionFailed));
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> deleteExpenseTransaction(String txId) async {
+    try {
+      LocalDatasource localDataSource = GetIt.instance<LocalDatasource>();
+      await localDataSource.deleteListItem(
+        localDataSource.transactionsBox,
+        localDataSource.transactionsKey,
+        (ExpenseTransactionModel val) => val.txId == txId,
+      );
+      return right(true);
+    } catch (e) {
+      log('error deleting transaction $e');
+      return left(Failure(AppStrings.deleteTransactionFailed));
     }
   }
 }

@@ -1,8 +1,7 @@
-String? validateNumber(String? value) {
-  RegExp regex = RegExp(r'^[0-9]+$');
+String? validateDouble(String? value) {
+  RegExp regex = RegExp(r'^\d*\.?\d+$');
   if (!regex.hasMatch(value ?? '')) {
-    return 'Please enter a valid number.';
-  } else {
-    return null;
+    return 'Please enter a valid amount.';
   }
+  return null;
 }

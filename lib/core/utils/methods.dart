@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
+import 'package:uuid/uuid.dart';
 
 void pickDate(BuildContext context, Function(DateTime) onConfirm) {
   DatePicker.showDateTimePicker(
@@ -31,4 +32,10 @@ double? parseDouble(String val) {
   } catch (e) {
     return null;
   }
+}
+
+//GET RANDOM IDS
+String getRandomId() {
+  var uuid = const Uuid();
+  return uuid.v4();
 }
