@@ -158,3 +158,20 @@ enum ShoppingTypeEnum {
     }
   }
 }
+
+final List<ShoppingTypeEnum> shoppingTypes = [
+  ShoppingTypeEnum.foodAndDrink,
+  ShoppingTypeEnum.transport,
+  ShoppingTypeEnum.lifestyle,
+  ShoppingTypeEnum.health,
+  ShoppingTypeEnum.education,
+  ShoppingTypeEnum.apparel,
+  ShoppingTypeEnum.gifts,
+  ShoppingTypeEnum.internet,
+  ShoppingTypeEnum.shopping,
+  ShoppingTypeEnum.charity,
+  ShoppingTypeEnum.pets,
+  ShoppingTypeEnum.socialLife,
+  ShoppingTypeEnum.phone,
+  ShoppingTypeEnum.fun,
+];

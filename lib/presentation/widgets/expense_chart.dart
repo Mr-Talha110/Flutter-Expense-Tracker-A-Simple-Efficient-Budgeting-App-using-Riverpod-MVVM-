@@ -3,8 +3,10 @@ import 'dart:math';
 import 'package:expense_tracker_app/core/utils/app_colors.dart';
 import 'package:expense_tracker_app/data/models/expense_chart_model.dart';
 import 'package:expense_tracker_app/data/models/expense_track_model.dart';
+import 'package:expense_tracker_app/presentation/view_models/providers/transaction_notifier_provider.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class _BarChart extends StatelessWidget {
   final List<ExpenseChartModel> chartData;
@@ -23,7 +25,7 @@ class _BarChart extends StatelessWidget {
             x: chartData.indexOf(data),
             barRods: [
               BarChartRodData(
-                toY: data.amount + 2,
+                toY: data.amount + 0.1,
                 width: 16,
                 color: data.color,
                 borderRadius: BorderRadius.circular(11),
@@ -34,8 +36,7 @@ class _BarChart extends StatelessWidget {
         }).toList(),
         gridData: const FlGridData(show: false),
         alignment: BarChartAlignment.spaceAround,
-        maxY: chartData.map((data) => data.amount).reduce(max) *
-            1.2, // Add padding
+        maxY: chartData.map((data) => data.amount).reduce(max) * 1.5,
       ),
     );
   }
@@ -45,7 +46,7 @@ class _BarChart extends StatelessWidget {
         touchTooltipData: BarTouchTooltipData(
           getTooltipColor: (_) => AppColors.transparent,
           tooltipPadding: EdgeInsets.zero,
-          tooltipMargin: 8,
+          tooltipMargin: 10,
           getTooltipItem: (
             BarChartGroupData group,
             int groupIndex,
@@ -110,21 +111,23 @@ class _BarChart extends StatelessWidget {
       );
 }
 
-class ExpenseChart extends StatefulWidget {
+class ExpenseChart extends ConsumerStatefulWidget {
   final List<ExpenseTransactionModel> transactions;
 
   const ExpenseChart({super.key, required this.transactions});
 
   @override
-  State<StatefulWidget> createState() => ExpenseChartState();
+  ConsumerState<ExpenseChart> createState() => _ExpenseChartState();
 }
 
-class ExpenseChartState extends State<ExpenseChart> {
+class _ExpenseChartState extends ConsumerState<ExpenseChart> {
   List<ExpenseChartModel> chartData = [];
 
   @override
   Widget build(BuildContext context) {
-    chartData = processData(widget.transactions);
+    chartData = ref
+        .read(transactionNotifierProvider.notifier)
+        .processData(widget.transactions);
     return AspectRatio(
       aspectRatio: 1.6,
       child: Padding(

@@ -2,7 +2,7 @@ import 'package:expense_tracker_app/core/utils/app_router.dart';
 import 'package:expense_tracker_app/core/utils/app_strings.dart';
 import 'package:expense_tracker_app/core/utils/app_theme.dart';
 import 'package:expense_tracker_app/data/datasources/local_datasource.dart';
-import 'package:expense_tracker_app/dependencies.dart';
+import 'package:expense_tracker_app/core/dependencies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

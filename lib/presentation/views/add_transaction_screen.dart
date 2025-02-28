@@ -11,7 +11,7 @@ import 'package:expense_tracker_app/core/widgets/primary_app_bar.dart';
 import 'package:expense_tracker_app/core/widgets/primary_button.dart';
 import 'package:expense_tracker_app/core/widgets/primary_text_field.dart';
 import 'package:expense_tracker_app/data/models/expense_track_model.dart';
-import 'package:expense_tracker_app/presentation/view_models/providers/add_transaction_notifier_provider.dart';
+import 'package:expense_tracker_app/presentation/view_models/providers/transaction_notifier_provider.dart';
 import 'package:expense_tracker_app/presentation/widgets/amount_text_field.dart';
 import 'package:expense_tracker_app/presentation/widgets/custom_dropdown.dart';
 import 'package:expense_tracker_app/presentation/widgets/rounded_corner.dart';
@@ -45,7 +45,6 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
       selectedDate = widget.expenseInfo!.date;
       shoppingType = widget.expenseInfo!.shoppingType;
     }
-
     super.initState();
   }
 
@@ -61,6 +60,7 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
         padding: const EdgeInsets.all(10),
         child: Stack(
           children: [
+            //SMALL PARTS FOR THE CUSTOM DROPDOWNS
             if (ref.watch(shoppingDropdownProvider))
               Positioned(
                 left: MediaQuery.of(context).size.width * 0.461,
@@ -76,12 +76,14 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
                   borderRadius: BorderRadius.circular(16),
                 ),
               ),
+            //MAIN COMPONENTS OF SCREEN
             Form(
               key: transactionFormKey,
               child: Column(
                 children: [
                   Row(
                     children: [
+                      //DROPDOWNS
                       Expanded(
                         child: CustomDropdown(
                           onTap: () => ref
@@ -109,9 +111,7 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: AmountTextField(
-                      onChanged: (value) {
-                        setState(() {});
-                      },
+                      onChanged: (value) => setState(() {}),
                       controller: amountController,
                       hintText: AppStrings.amountHintText,
                       validator: validateDouble,
@@ -156,13 +156,12 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
                   18.vertical,
                   PrimaryTextField(
                     hintText: AppStrings.note,
-                    onChanged: (value) {
-                      setState(() {});
-                    },
+                    onChanged: (value) => setState(() {}),
                     controller: notesController,
                     prefixIcon: AppAssets.notesIcon,
                   ),
                   18.vertical,
+                  //UI ONLY
                   Row(
                     children: [
                       SvgPicture.asset(AppAssets.labelIcon),
@@ -205,6 +204,7 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
                 ],
               ),
             ),
+            //STACKING THE SHOPPING SELECTION DROPDOWN
             if (ref.watch(shoppingDropdownProvider))
               Positioned(
                 top: 65,
@@ -226,6 +226,7 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
           text: widget.expenseInfo == null ? AppStrings.add : AppStrings.update,
           margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           onPressed: () {
+            //COLLECTING THE DATA IN MODEL
             ExpenseTransactionModel expenseTrackModel = ExpenseTransactionModel(
               txId: widget.expenseInfo?.txId ?? getRandomId(),
               amount: parseDouble(amountController.text.trim()) ?? 0,
@@ -233,7 +234,8 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
               note: notesController.text.trim(),
               shoppingType: shoppingType ?? ShoppingTypeEnum.fun,
             );
-            ref.read(addTransactionNotifierProvider).saveTransaction(
+            //TRIGGER THE SAVE TRANSACTION FUCNTION
+            ref.read(transactionNotifierProvider.notifier).saveTransaction(
                   expenseTrackModel,
                   isUpdate: widget.expenseInfo != null,
                 );
@@ -243,20 +245,3 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
     );
   }
 }
-
-final List<ShoppingTypeEnum> shoppingTypes = [
-  ShoppingTypeEnum.foodAndDrink,
-  ShoppingTypeEnum.transport,
-  ShoppingTypeEnum.lifestyle,
-  ShoppingTypeEnum.health,
-  ShoppingTypeEnum.education,
-  ShoppingTypeEnum.apparel,
-  ShoppingTypeEnum.gifts,
-  ShoppingTypeEnum.internet,
-  ShoppingTypeEnum.shopping,
-  ShoppingTypeEnum.charity,
-  ShoppingTypeEnum.pets,
-  ShoppingTypeEnum.socialLife,
-  ShoppingTypeEnum.phone,
-  ShoppingTypeEnum.fun,
-];
