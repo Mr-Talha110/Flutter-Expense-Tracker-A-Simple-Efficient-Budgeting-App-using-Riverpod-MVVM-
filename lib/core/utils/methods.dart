@@ -39,3 +39,9 @@ String getRandomId() {
   var uuid = const Uuid();
   return uuid.v4();
 }
+
+List<int> generateDaysInMonth() {
+  final now = DateTime.now();
+  final lastDay = DateTime(now.year, now.month + 1, 0).day;
+  return List.generate(lastDay ~/ 5 + 1, (index) => (index * 5) + 1);
+}

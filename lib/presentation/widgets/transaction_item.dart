@@ -106,15 +106,6 @@ class _TransactionItemState extends State<TransactionItem>
                         fontFamily: AppFonts.robotoMedium),
                   ),
                   4.vertical,
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 4, horizontal: 6),
-                    decoration: BoxDecoration(
-                      color: AppColors.greish,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Text('Lunch'),
-                  ),
-                  4.vertical,
                   Row(
                     children: [
                       SvgPicture.asset(AppAssets.bankIcon),

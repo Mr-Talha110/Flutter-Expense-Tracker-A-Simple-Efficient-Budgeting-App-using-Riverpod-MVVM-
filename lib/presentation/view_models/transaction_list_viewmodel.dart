@@ -33,6 +33,7 @@ class TransactionListViewModel
               ToastOverlay.showToast(AppStrings.fetchTransactionFailed);
             },
             (result) {
+              result.sort((a, b) => a.date.compareTo(b.date));
               _updateState(ApiResponse.completed(result));
             },
           ),
@@ -49,6 +50,8 @@ class TransactionListViewModel
       } else {
         updatedList.add(expenseModel);
       }
+      updatedList.sort((a, b) => a.date.compareTo(b.date));
+
       _updateState(ApiResponse.completed(updatedList));
     }
   }
@@ -109,5 +112,25 @@ class TransactionListViewModel
     } else {
       return DateFormat('MMMM d, yyyy').format(time);
     }
+  }
+
+  String getTotalAmountForDate(DateTime date) {
+    if (state.status == LoadStatus.completed && state.data != null) {
+      final filteredTransactions = state.data!.where((transaction) {
+        final transactionDate = DateTime(
+          transaction.date.year,
+          transaction.date.month,
+          transaction.date.day,
+        );
+        final targetDate = DateTime(date.year, date.month, date.day);
+        return transactionDate == targetDate;
+      }).toList();
+      double totalAmount = 0;
+      for (var transaction in filteredTransactions) {
+        totalAmount += transaction.amount;
+      }
+      return totalAmount.toString();
+    }
+    return '0';
   }
 }

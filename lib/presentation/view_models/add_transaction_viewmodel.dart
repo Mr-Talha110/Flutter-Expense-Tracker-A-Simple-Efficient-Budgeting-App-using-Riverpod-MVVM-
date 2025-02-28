@@ -47,11 +47,4 @@ class AddTransactionsViewModel extends StateNotifier<String> {
           ),
         );
   }
-
-  // clearData() {
-  //   ref.read(amountControllerProvider).clear();
-  //   ref.read(notesControllerProvider).clear();
-  //   ref.read(shoppingTypeProvider.notifier).state = null;
-  //   ref.read(selectedDateProvider.notifier).state = null;
-  // }
 }
