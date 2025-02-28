@@ -11,11 +11,11 @@ class TransactionListViewModel
     extends StateNotifier<ApiResponse<List<ExpenseTransactionModel>>> {
   final Ref ref;
   TransactionListViewModel({required this.ref})
-      : super(
-          ApiResponse.idle('Initial state'),
-        );
+      : super(ApiResponse.idle('Initial state'));
 
+  //STATE GETTER
   List<ExpenseTransactionModel> get txList => state.data ?? [];
+
   final transactionRepository = GetIt.instance<TransactionRepositoryImp>();
 
   void _updateState(ApiResponse<List<ExpenseTransactionModel>> newState) {
@@ -24,6 +24,7 @@ class TransactionListViewModel
     }
   }
 
+  //FETCH TRANSACTIONS
   fetchTransactions() async {
     _updateState(ApiResponse.loading('Loading Transactions'));
     await transactionRepository.fetchExpenseTransaction().then(
@@ -75,6 +76,7 @@ class TransactionListViewModel
     }
   }
 
+  //EXPENSE CHART METHODS
   String getTotalExpense() {
     if (state.status == LoadStatus.completed && state.data != null) {
       double expense = 0;

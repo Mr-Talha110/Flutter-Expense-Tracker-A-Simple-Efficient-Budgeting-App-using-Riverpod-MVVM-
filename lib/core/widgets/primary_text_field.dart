@@ -7,7 +7,6 @@ class PrimaryTextField extends StatelessWidget {
   final String? hintText;
   final String? prefixIcon;
   final void Function(String value)? onChanged;
-
   final TextEditingController? controller;
 
   const PrimaryTextField({

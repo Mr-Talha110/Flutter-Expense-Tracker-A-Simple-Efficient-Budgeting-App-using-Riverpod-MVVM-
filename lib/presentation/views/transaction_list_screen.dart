@@ -1,9 +1,9 @@
-import 'package:expense_tracker_app/core/utils/extensions/space_extension.dart';
-import 'package:expense_tracker_app/core/utils/app_router.dart';
 import 'package:expense_tracker_app/core/utils/api_response.dart';
 import 'package:expense_tracker_app/core/utils/app_colors.dart';
+import 'package:expense_tracker_app/core/utils/app_router.dart';
 import 'package:expense_tracker_app/core/utils/app_strings.dart';
 import 'package:expense_tracker_app/core/utils/app_text_style.dart';
+import 'package:expense_tracker_app/core/utils/extensions/space_extension.dart';
 import 'package:expense_tracker_app/data/models/expense_chart_model.dart';
 import 'package:expense_tracker_app/presentation/view_models/providers/transaction_list_notifier_provider.dart';
 import 'package:expense_tracker_app/presentation/widgets/expense_chart.dart';
@@ -34,6 +34,8 @@ class _TransactionlistScreenState extends ConsumerState<TransactionlistScreen> {
     final transactionListProvider =
         ref.read(transactionListNotifierProvider.notifier);
     processData(transactionListProvider.txList);
+
+    //SWITCH CASE FOR MANAGE WIDGET ACCORDING TO STATE STATUS
     switch (state.status) {
       case LoadStatus.idle:
         return Center(
@@ -76,6 +78,7 @@ class _TransactionlistScreenState extends ConsumerState<TransactionlistScreen> {
                             itemBuilder: (context, index) {
                               return Column(
                                 children: [
+                                  //WIDGETS FOR SEPERATE THE LIST ITEM ACCORDING TO DATE
                                   if (transactionListProvider.isDifferentDay(
                                       index: index))
                                     Container(
@@ -102,7 +105,8 @@ class _TransactionlistScreenState extends ConsumerState<TransactionlistScreen> {
                                           Text(
                                             '-£${transactionListProvider.getTotalAmountForDate(state.data![index].date)}',
                                             style: TextStyle(
-                                                color: AppColors.neutralGrey),
+                                              color: AppColors.neutralGrey,
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -129,9 +133,7 @@ class _TransactionlistScreenState extends ConsumerState<TransactionlistScreen> {
                 ),
               );
       default:
-        return Center(
-          child: Text('No'),
-        );
+        return Center(child: Text('UNKOWN STATE'));
     }
   }
 }

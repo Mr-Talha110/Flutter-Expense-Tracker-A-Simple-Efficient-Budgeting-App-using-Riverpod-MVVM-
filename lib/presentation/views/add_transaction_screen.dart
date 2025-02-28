@@ -5,13 +5,12 @@ import 'package:expense_tracker_app/core/utils/app_strings.dart';
 import 'package:expense_tracker_app/core/utils/app_text_style.dart';
 import 'package:expense_tracker_app/core/utils/enums/shopping_type_enum.dart';
 import 'package:expense_tracker_app/core/utils/extensions/space_extension.dart';
-import 'package:expense_tracker_app/core/utils/methods.dart';
+import 'package:expense_tracker_app/core/utils/helping_methods.dart';
 import 'package:expense_tracker_app/core/utils/validations.dart';
 import 'package:expense_tracker_app/core/widgets/primary_app_bar.dart';
 import 'package:expense_tracker_app/core/widgets/primary_button.dart';
 import 'package:expense_tracker_app/core/widgets/primary_text_field.dart';
 import 'package:expense_tracker_app/data/models/expense_track_model.dart';
-import 'package:expense_tracker_app/presentation/view_models/providers/add_transaction_fields_providers.dart';
 import 'package:expense_tracker_app/presentation/view_models/providers/add_transaction_notifier_provider.dart';
 import 'package:expense_tracker_app/presentation/widgets/amount_text_field.dart';
 import 'package:expense_tracker_app/presentation/widgets/custom_dropdown.dart';
@@ -22,6 +21,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 final GlobalKey<FormState> transactionFormKey = GlobalKey<FormState>();
+final shoppingDropdownProvider = StateProvider<bool>((ref) => false);
 
 class AddTransactionScreen extends ConsumerStatefulWidget {
   final ExpenseTransactionModel? expenseInfo;
@@ -233,7 +233,7 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
               note: notesController.text.trim(),
               shoppingType: shoppingType ?? ShoppingTypeEnum.fun,
             );
-            ref.read(addTransactionNotifierProvider.notifier).saveTransaction(
+            ref.read(addTransactionNotifierProvider).saveTransaction(
                   expenseTrackModel,
                   isUpdate: widget.expenseInfo != null,
                 );

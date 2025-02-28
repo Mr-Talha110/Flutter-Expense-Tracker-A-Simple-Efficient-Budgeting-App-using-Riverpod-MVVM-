@@ -4,9 +4,9 @@ import 'package:expense_tracker_app/core/utils/app_assets.dart';
 import 'package:expense_tracker_app/core/utils/app_colors.dart';
 import 'package:hive/hive.dart';
 
-part 'shopping_type_enum.g.dart'; // Generated file
+part 'shopping_type_enum.g.dart';
 
-@HiveType(typeId: 1) // Unique typeId for this enum
+@HiveType(typeId: 1)
 enum ShoppingTypeEnum {
   @HiveField(0)
   foodAndDrink('foodAndDrink'),

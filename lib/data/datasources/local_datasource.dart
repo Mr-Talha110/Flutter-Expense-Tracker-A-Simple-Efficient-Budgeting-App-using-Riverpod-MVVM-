@@ -7,26 +7,6 @@ class LocalDatasource {
   String transactionsBox = 'transactions-box';
   String transactionsKey = 'transactions-key';
 
-  //****************GENERIC MODEL METHODS********************//
-  Future<void> storeModel<T>(T model, String boxName, String key) async {
-    final box = await Hive.openBox<T>(boxName);
-    await box.put(key, model);
-    await box.close();
-  }
-
-  Future<T?> getModel<T>(String boxName, String key) async {
-    final box = await Hive.openBox<T>(boxName);
-    T? model = box.get(key);
-    await box.close();
-    return model;
-  }
-
-  Future<void> clearBox(String boxName) async {
-    final box = await Hive.openBox(boxName);
-    await box.clear();
-    await box.close();
-  }
-
   //****************GENERIC LIST METHODS********************//
   Future<void> storeList<T>(String boxName, String key, T model) async {
     if (!Hive.isBoxOpen(boxName)) {
@@ -38,6 +18,7 @@ class LocalDatasource {
     await box.put(key, currentList);
   }
 
+  //FETCH
   Future<List<T>> fetchList<T>(String boxName, String key) async {
     if (!Hive.isBoxOpen(boxName)) {
       await Hive.openBox(boxName);
@@ -50,6 +31,7 @@ class LocalDatasource {
     return storedList.map((item) => item as T).toList();
   }
 
+  //EDIT
   Future<void> editListItem<T>(
     String boxName,
     String key,
@@ -68,6 +50,7 @@ class LocalDatasource {
     }
   }
 
+  //DELETE
   Future<void> deleteListItem<T>(
     String boxName,
     String key,

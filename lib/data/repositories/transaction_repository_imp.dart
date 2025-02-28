@@ -9,6 +9,7 @@ import 'package:expense_tracker_app/data/repositories/transaction_repository.dar
 import 'package:get_it/get_it.dart';
 
 class TransactionRepositoryImp extends TransactionRepository {
+  //SAVE TRANSACTION
   @override
   Future<Either<Failure, bool>> saveExpenseTransaction(
     ExpenseTransactionModel expenseInfo,
@@ -27,6 +28,7 @@ class TransactionRepositoryImp extends TransactionRepository {
     }
   }
 
+  //UPDATE TRANSACTION
   @override
   Future<Either<Failure, bool>> updateExpenseTransaction(
     ExpenseTransactionModel expenseInfo,
@@ -46,6 +48,7 @@ class TransactionRepositoryImp extends TransactionRepository {
     }
   }
 
+  //FETCH TRANSACTION
   @override
   Future<Either<Failure, List<ExpenseTransactionModel>>>
       fetchExpenseTransaction() async {
@@ -62,6 +65,7 @@ class TransactionRepositoryImp extends TransactionRepository {
     }
   }
 
+  //DELETE TRANSACTION
   @override
   Future<Either<Failure, bool>> deleteExpenseTransaction(String txId) async {
     try {

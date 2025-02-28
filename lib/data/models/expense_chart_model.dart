@@ -18,7 +18,8 @@ class ExpenseChartModel {
 }
 
 List<ExpenseChartModel> processData(
-    List<ExpenseTransactionModel> transactions) {
+  List<ExpenseTransactionModel> transactions,
+) {
   final Map<int, double> intervalAmounts = {};
   double totalSpending = 0;
 
