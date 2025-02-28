@@ -54,7 +54,7 @@ class PrimaryButton extends StatelessWidget {
           text,
           style: AppTextStyle.bodyLarge.copyWith(
             color: isDisable
-                ? AppColors.black.withCustomOpacity(0.50)
+                ? AppColors.black.withCustomOpacity(0.50) 
                 : AppColors.black,
           ),
         ),

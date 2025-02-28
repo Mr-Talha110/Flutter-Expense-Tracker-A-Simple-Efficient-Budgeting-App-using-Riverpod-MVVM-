@@ -1,10 +1,10 @@
-import 'package:expense_tracker_app/core/utils/enums/shopping_type_enum.dart';
-import 'package:expense_tracker_app/core/utils/extensions/space_extension.dart';
 import 'package:expense_tracker_app/core/utils/app_assets.dart';
 import 'package:expense_tracker_app/core/utils/app_colors.dart';
 import 'package:expense_tracker_app/core/utils/app_fonts.dart';
 import 'package:expense_tracker_app/core/utils/app_strings.dart';
 import 'package:expense_tracker_app/core/utils/app_text_style.dart';
+import 'package:expense_tracker_app/core/utils/enums/shopping_type_enum.dart';
+import 'package:expense_tracker_app/core/utils/extensions/space_extension.dart';
 import 'package:expense_tracker_app/core/utils/methods.dart';
 import 'package:expense_tracker_app/core/utils/validations.dart';
 import 'package:expense_tracker_app/core/widgets/primary_app_bar.dart';
@@ -90,8 +90,8 @@ class _AddTransactionScreenState extends ConsumerState<AddTransactionScreen> {
                               !ref
                                   .read(shoppingDropdownProvider.notifier)
                                   .state,
-                          title: AppStrings.shopping,
-                          icon: AppAssets.cartIcon,
+                          title: shoppingType?.title ?? AppStrings.shopping,
+                          icon: shoppingType?.icon ?? AppAssets.cartIcon,
                           bgColor: AppColors.lightBlue,
                         ),
                       ),
