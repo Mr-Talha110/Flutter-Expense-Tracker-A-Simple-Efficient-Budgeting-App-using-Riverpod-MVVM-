@@ -1,5 +1,5 @@
-import 'package:expense_tracker_app/core/extensions/space_extension.dart';
-import 'package:expense_tracker_app/core/routes/app_router.dart';
+import 'package:expense_tracker_app/core/utils/extensions/space_extension.dart';
+import 'package:expense_tracker_app/core/utils/app_router.dart';
 import 'package:expense_tracker_app/core/utils/api_response.dart';
 import 'package:expense_tracker_app/core/utils/app_colors.dart';
 import 'package:expense_tracker_app/core/utils/app_strings.dart';

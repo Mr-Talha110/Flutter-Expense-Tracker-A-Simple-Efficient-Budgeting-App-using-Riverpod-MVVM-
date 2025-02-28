@@ -1,6 +1,6 @@
-import 'package:expense_tracker_app/core/extensions/opacity_extension.dart';
 import 'package:expense_tracker_app/core/utils/app_colors.dart';
 import 'package:expense_tracker_app/core/utils/app_text_style.dart';
+import 'package:expense_tracker_app/core/utils/extensions/opacity_extension.dart';
 import 'package:flutter/material.dart';
 
 class PrimaryButton extends StatelessWidget {
@@ -49,7 +49,7 @@ class PrimaryButton extends StatelessWidget {
             isDisable ? AppColors.lightGrey : bgColor ?? AppColors.pink,
           ),
         ),
-        onPressed: onPressed,
+        onPressed: isDisable ? () {} : onPressed,
         child: Text(
           text,
           style: AppTextStyle.bodyLarge.copyWith(

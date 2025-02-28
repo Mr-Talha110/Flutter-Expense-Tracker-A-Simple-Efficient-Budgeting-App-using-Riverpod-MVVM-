@@ -1,4 +1,4 @@
-import 'package:expense_tracker_app/core/enums/shopping_type_enum.dart';
+import 'package:expense_tracker_app/core/utils/enums/shopping_type_enum.dart';
 import 'package:expense_tracker_app/data/models/expense_track_model.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';

@@ -1,5 +1,5 @@
-import 'package:expense_tracker_app/core/extensions/opacity_extension.dart';
-import 'package:expense_tracker_app/core/extensions/space_extension.dart';
+import 'package:expense_tracker_app/core/utils/extensions/opacity_extension.dart';
+import 'package:expense_tracker_app/core/utils/extensions/space_extension.dart';
 import 'package:expense_tracker_app/core/utils/app_assets.dart';
 import 'package:expense_tracker_app/core/utils/app_colors.dart';
 import 'package:expense_tracker_app/core/utils/app_text_style.dart';

@@ -20,11 +20,11 @@ class _BarChart extends StatelessWidget {
         borderData: borderData,
         barGroups: chartData.map((data) {
           return BarChartGroupData(
-            x: data.category.index,
+            x: chartData.indexOf(data),
             barRods: [
               BarChartRodData(
                 toY: data.amount + 2,
-                width: 13,
+                width: 16,
                 color: data.color,
                 borderRadius: BorderRadius.circular(11),
               ),
@@ -54,27 +54,28 @@ class _BarChart extends StatelessWidget {
           ) {
             final data = chartData[groupIndex];
             return BarTooltipItem(
-              '${data.amount.toString()}%',
+              '${data.percentage.toStringAsFixed(1)}%',
               const TextStyle(
                 color: AppColors.black,
                 fontWeight: FontWeight.bold,
-                fontSize: 9,
+                fontSize: 10,
               ),
             );
           },
         ),
       );
-
   Widget getTitles(double value, TitleMeta meta) {
     final style = TextStyle(
       color: AppColors.mediumGrey,
       fontWeight: FontWeight.w400,
-      fontSize: 12,
+      fontSize: 10,
     );
+    final intervals = [1, 5, 10, 15, 20, 25, 30];
+    final interval = intervals[value.toInt()];
     return SideTitleWidget(
       meta: meta,
       space: 4,
-      child: Text((value.toInt() + 1).toString(), style: style),
+      child: Text(interval.toString(), style: style),
     );
   }
 
@@ -102,7 +103,7 @@ class _BarChart extends StatelessWidget {
         show: true,
         border: Border(
           bottom: BorderSide(
-            color: Color(0xffD9D9D9),
+            color: AppColors.lightGrey,
             width: 1,
           ),
         ),

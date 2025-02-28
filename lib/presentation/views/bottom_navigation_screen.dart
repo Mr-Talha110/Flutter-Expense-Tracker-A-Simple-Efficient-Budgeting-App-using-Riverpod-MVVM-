@@ -1,12 +1,12 @@
-import 'package:expense_tracker_app/core/routes/app_router.dart';
 import 'package:expense_tracker_app/core/utils/app_assets.dart';
 import 'package:expense_tracker_app/core/utils/app_colors.dart';
+import 'package:expense_tracker_app/core/utils/app_router.dart';
 import 'package:expense_tracker_app/presentation/views/transaction_list_screen.dart';
 import 'package:expense_tracker_app/presentation/widgets/bottom_nav_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final currentIndexProvider = StateProvider<int>((ref) => 0);
+final currentIndexProvider = StateProvider<int>((ref) => 1);
 
 class BottomNavigationScreen extends ConsumerStatefulWidget {
   const BottomNavigationScreen({super.key});

@@ -1,6 +1,6 @@
-import 'package:expense_tracker_app/core/enums/shopping_type_enum.dart';
-import 'package:expense_tracker_app/core/extensions/opacity_extension.dart';
-import 'package:expense_tracker_app/core/extensions/space_extension.dart';
+import 'package:expense_tracker_app/core/utils/enums/shopping_type_enum.dart';
+import 'package:expense_tracker_app/core/utils/extensions/opacity_extension.dart';
+import 'package:expense_tracker_app/core/utils/extensions/space_extension.dart';
 import 'package:expense_tracker_app/core/utils/app_colors.dart';
 import 'package:expense_tracker_app/presentation/view_models/providers/add_transaction_fields_providers.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-import 'package:expense_tracker_app/core/routes/app_router.dart';
+import 'package:expense_tracker_app/core/utils/app_router.dart';
 import 'package:expense_tracker_app/core/utils/app_strings.dart';
 import 'package:expense_tracker_app/core/utils/popups.dart';
 import 'package:expense_tracker_app/data/models/expense_track_model.dart';
