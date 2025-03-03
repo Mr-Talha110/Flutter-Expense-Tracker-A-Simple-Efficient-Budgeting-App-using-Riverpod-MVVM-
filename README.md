@@ -11,9 +11,10 @@ This is a simple Expense Tracker app built with Flutter using Riverpod for state
 
 ## Screenshots
 
-![ss1](https://github.com/user-attachments/assets/ee229f84-ad0e-4e6f-bed3-af0c1e884e62)
-![ss2](https://github.com/user-attachments/assets/1df10cec-7afd-4e47-a0db-5e4cab557215)
-![ss3](https://github.com/user-attachments/assets/06690819-7be8-45f9-a21c-fdf8b53f4e27)
+
+![ss1](https://github.com/user-attachments/assets/c74a0b3b-85cb-4829-8b75-620c3592d88f)
+![ss2](https://github.com/user-attachments/assets/1e7cfbff-c939-4cb4-a7f3-047be24dd075)
+![ss3](https://github.com/user-attachments/assets/3a15b103-3ee2-480d-98aa-aeb509728f08)
 
 
 ## Installation
