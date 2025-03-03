@@ -1,16 +1,43 @@
-# expense_tracker_app
+# Expense Tracker App
 
-A new Flutter project.
+## Overview
+This is a simple Expense Tracker app built with Flutter using Riverpod for state management and following the MVVM architecture.
 
-## Getting Started
+## Features
+- Add new transactions
+- Select from 14 predefined categories
+- Track expenses easily
+- Simple and clean UI
 
-This project is a starting point for a Flutter application.
+## Screenshots
 
-A few resources to get you started if this is your first Flutter project:
+![ss1](https://github.com/user-attachments/assets/ee229f84-ad0e-4e6f-bed3-af0c1e884e62)
+![ss2](https://github.com/user-attachments/assets/1df10cec-7afd-4e47-a0db-5e4cab557215)
+![ss3](https://github.com/user-attachments/assets/06690819-7be8-45f9-a21c-fdf8b53f4e27)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Installation
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-repo/expense-tracker.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd expense-tracker
+   ```
+3. Install dependencies:
+   ```sh
+   flutter pub get
+   ```
+4. Run the app:
+   ```sh
+   flutter run
+   ```
+
+
+## Technologies Used
+- Flutter
+- Riverpod
+- MVVM Architecture
+
+
